@@ -1,0 +1,61 @@
+<html>
+<style>
+    table,th,td{
+        border: 1px double black;
+        width:20%;
+    }
+</style>
+<body bgcolor=#a3cfb4>
+
+    <center>
+
+        <h1>  PREDICTION :  </h1>
+    
+    {%if data == 0%}
+    <h1>Person may not have heart disease</h1>  
+    
+    {%else%}
+    <h2>Person may have heart disease</h2>
+    <div>
+    <h3>Values of hyper parameters are :</h3>
+    <table>
+        <th>Parameter</th>
+        <th>value</th>
+        <tr>
+            <td>age: </td>
+            <td>{{ arrayData[0] }}</td>
+        </tr>
+    
+        <tr>
+            <td>Resting Blood Pressure: </td>
+            <td>{{arrayData[3]}}</td>
+        </tr>
+        <tr>
+            <td>chol:</td>
+            <td>{{arrayData[4]}}</td>
+        </tr>
+        <tr>
+            <td>thalach:</td>
+            <td>{{arrayData[7]}}</td>
+        </tr>
+     
+    </table>
+        {%if (arrayData[3]|int >=94) and (arrayData[3]|int<110) %}
+        <h3 style "color =#ffffcc">leve of heart disease : Low<h3>
+        {% elif (arrayData[3]|int >=110) and (arrayData[3]|int<=140) %}
+        <h3 color=#ffff00>leve of heart disease: Moderate<h3>
+        {%else%}
+        <h3 color=#ff0000>leve of heart disease: High</h3>
+        {%endif%}
+    </div>
+    
+    {%endif%}
+
+        <br><br>
+    <a href='/'>go back to home page</a>
+    
+  
+
+</body>
+
+</html>
